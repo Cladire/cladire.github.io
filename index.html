@@ -45,23 +45,36 @@
         .navbar {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--gold);
-            letter-spacing: 1px;
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .logo span {
+        .brand-logo {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
             color: var(--text-light);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-right: 5px;
         }
 
@@ -105,7 +118,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 2rem 50px;
+            padding: 120px 2rem 50px;
             background: linear-gradient(rgba(15, 20, 28, 0.85), rgba(15, 20, 28, 0.95)),
                         url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover;
         }
@@ -384,7 +397,10 @@
 
     <header>
         <div class="navbar">
-            <a href="#" class="logo">Clàdire <span>| كلادير</span></a>
+            <a href="#" class="brand-container">
+                <img src="logo.png" alt="Clàdire Logo" class="brand-logo" onerror="this.style.display='none'">
+                <div class="logo-text">Clàdire <span>| كلادير</span></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">من نحن</a></li>
                 <li><a href="#services">خدماتنا</a></li>
@@ -497,12 +513,10 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">تواصل معنا وحساباتنا</h2>
         <div class="contact-container">
             <div class="contact-info">
-                <!-- Phone -->
                 <a href="tel:+201500001771" class="info-box">
                     <i class="fas fa-phone-alt"></i>
                     <div>
@@ -511,7 +525,6 @@
                     </div>
                 </a>
 
-                <!-- Facebook -->
                 <a href="https://www.facebook.com/cladiree" target="_blank" class="info-box social-link-box">
                     <i class="fab fa-facebook-f"></i>
                     <div>
@@ -520,7 +533,6 @@
                     </div>
                 </a>
 
-                <!-- Instagram -->
                 <a href="https://www.instagram.com/cladire_" target="_blank" class="info-box social-link-box">
                     <i class="fab fa-instagram"></i>
                     <div>
@@ -529,7 +541,6 @@
                     </div>
                 </a>
 
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@cladiree" target="_blank" class="info-box social-link-box">
                     <i class="fab fa-tiktok"></i>
                     <div>
@@ -539,7 +550,6 @@
                 </a>
             </div>
 
-            <!-- Fast Quote Form -->
             <form class="contact-form" onsubmit="sendToWhatsApp(event)">
                 <h3 style="color: var(--gold); margin-bottom: 0.5rem;">احجز معاينة / مقايسة</h3>
                 <input type="text" id="clientName" placeholder="الاسم بالكامل" required>
@@ -557,12 +567,10 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp -->
     <a href="https://wa.me/201500001771?text=مرحباً،%20أريد%20الاستفسار%20عن%20خدمات%20التشطيب" class="floating-whatsapp" target="_blank" title="تحدث معنا على واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-socials">
             <a href="https://www.facebook.com/cladiree" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
