@@ -153,7 +153,6 @@
             margin: 0 auto;
         }
 
-        /* About Section */
         .about-content {
             background: var(--card-bg);
             padding: 2.5rem;
@@ -164,7 +163,6 @@
             line-height: 2;
         }
 
-        /* Services Grid */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -199,7 +197,6 @@
             font-size: 0.95rem;
         }
 
-        /* Gallery */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -231,7 +228,6 @@
             border-top: 2px solid var(--gold);
         }
 
-        /* Testimonials */
         .testimonial-card {
             background: var(--card-bg);
             padding: 1.5rem;
@@ -239,7 +235,6 @@
             border-right: 3px solid var(--gold);
         }
 
-        /* Contact Section */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -249,21 +244,36 @@
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .info-box {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
             background: var(--card-bg);
             padding: 1.2rem;
             border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .info-box:hover {
+            border-color: var(--gold);
+            transform: translateX(-5px);
         }
 
         .info-box i {
             font-size: 1.8rem;
             color: var(--gold);
+            width: 30px;
+            text-align: center;
+        }
+
+        .social-link-box {
+            border-right: 3px solid var(--gold);
         }
 
         .contact-form {
@@ -305,7 +315,6 @@
             background: var(--gold-hover);
         }
 
-        /* Floating WhatsApp Button */
         .floating-whatsapp {
             position: fixed;
             bottom: 25px;
@@ -331,11 +340,38 @@
 
         footer {
             background: #090c11;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
             border-top: 1px solid #202b3a;
             color: var(--text-muted);
-            font-size: 0.9rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .footer-socials a:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
@@ -461,34 +497,51 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
-        <h2 class="section-title">تواصل معنا</h2>
+        <h2 class="section-title">تواصل معنا وحساباتنا</h2>
         <div class="contact-container">
             <div class="contact-info">
-                <div class="info-box">
+                <!-- Phone -->
+                <a href="tel:+201500001771" class="info-box">
                     <i class="fas fa-phone-alt"></i>
                     <div>
-                        <h4>الهاتف / واتساب</h4>
-                        <p><a href="tel:+201500001771" style="color: var(--text-light); text-decoration: none;">+20 15 00001771</a></p>
+                        <h4>اتصال هاتفي</h4>
+                        <p>+20 15 00001771</p>
                     </div>
-                </div>
-                <div class="info-box">
-                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/cladiree" target="_blank" class="info-box social-link-box">
+                    <i class="fab fa-facebook-f"></i>
                     <div>
-                        <h4>مناطق العمل</h4>
-                        <p>القاهرة، مدينة الشروق، التجمع الخامس، مدينتي، كمبوند وصال</p>
+                        <h4>فيسبوك (Facebook)</h4>
+                        <p>@cladiree</p>
                     </div>
-                </div>
-                <div class="info-box">
-                    <i class="fab fa-facebook"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/cladire_" target="_blank" class="info-box social-link-box">
+                    <i class="fab fa-instagram"></i>
                     <div>
-                        <h4>فيسبوك</h4>
-                        <p>Clàdire Construction Company</p>
+                        <h4>إنستغرام (Instagram)</h4>
+                        <p>@cladire_</p>
                     </div>
-                </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@cladiree" target="_blank" class="info-box social-link-box">
+                    <i class="fab fa-tiktok"></i>
+                    <div>
+                        <h4>تيك توك (TikTok)</h4>
+                        <p>@cladiree</p>
+                    </div>
+                </a>
             </div>
 
+            <!-- Fast Quote Form -->
             <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+                <h3 style="color: var(--gold); margin-bottom: 0.5rem;">احجز معاينة / مقايسة</h3>
                 <input type="text" id="clientName" placeholder="الاسم بالكامل" required>
                 <input type="tel" id="clientPhone" placeholder="رقم الهاتف" required>
                 <select id="projectLocation">
@@ -498,17 +551,25 @@
                     <option value="مدينتي">مدينتي</option>
                     <option value="أخرى">منطقة أخرى</option>
                 </select>
-                <textarea id="projectDetails" rows="4" placeholder="تفاصيل الوحدة والمساحة المطلوبة"></textarea>
+                <textarea id="projectDetails" rows="3" placeholder="تفاصيل الوحدة والمساحة"></textarea>
                 <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> إرسال عبر واتساب</button>
             </form>
         </div>
     </section>
 
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/201500001771?text=مرحباً،%20أريد%20الاستفسار%20عن%20خدمات%20التشطيب" class="floating-whatsapp" target="_blank" title="تحدث معنا على واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Footer -->
     <footer>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/cladiree" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/cladire_" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@cladiree" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/201500001771" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
         <p>جميع الحقوق محفوظة &copy; 2026 شركة Clàdire للتشطيبات والديكور.</p>
     </footer>
 
