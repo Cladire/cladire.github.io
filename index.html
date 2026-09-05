@@ -25,6 +25,9 @@
       padding: 0;
       font-family: 'Cairo', sans-serif;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       background-color: var(--bg-dark);
       color: var(--text-main);
@@ -94,21 +97,53 @@
       transform: translateY(-2px);
       background: linear-gradient(135deg, var(--gold-hover), var(--gold));
     }
+    
+    /* واجهة الموقع وتنسيق اللوجو في الخلفية */
     .hero {
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 130px 20px 70px;
+      position: relative;
       background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 380px;
+      height: 380px;
+      background: url('Logo.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.12;
+      pointer-events: none;
+      filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.4));
+      z-index: 1;
+    }
+    .hero-center-logo {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(197, 160, 89, 0.3);
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
     }
     .hero h1 {
-      font-size: 2.7rem;
+      font-size: 2.8rem;
       font-weight: 900;
       margin-bottom: 15px;
       max-width: 800px;
+      position: relative;
+      z-index: 2;
     }
     .hero h1 span {
       color: var(--gold);
@@ -118,9 +153,16 @@
       font-size: 1.15rem;
       max-width: 650px;
       margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
     }
+    .hero .btn-action {
+      position: relative;
+      z-index: 2;
+    }
+
     section {
-      padding: 60px 5%;
+      padding: 65px 5%;
     }
     .section-title {
       text-align: center;
@@ -139,6 +181,49 @@
       margin: 10px auto 0;
       border-radius: 2px;
     }
+
+    /* تنسيقات قسم من نحن */
+    .about-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .about-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px 25px;
+      text-align: center;
+    }
+    .about-card h3 {
+      color: var(--gold);
+      margin-bottom: 15px;
+      font-size: 1.45rem;
+    }
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 25px;
+    }
+    .about-highlights {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 22px;
+    }
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+    .highlight-item i {
+      color: var(--gold);
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -171,7 +256,7 @@
       font-size: 0.95rem;
     }
 
-    /* تنسيقات شريط التمرير (Slider) للمشاريع */
+    /* تنسيقات شريط التمرير للمشاريع */
     .portfolio-container {
       max-width: 1050px;
       margin: 0 auto;
@@ -261,10 +346,26 @@
     .next-btn { margin-right: 10px; }
     .project-footer p {
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       line-height: 1.8;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 14px;
+    }
+
+    /* مشغل الفيديو */
+    .video-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 18px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--border);
+    }
+    .video-container video {
+      width: 100%;
+      max-height: 480px;
+      display: block;
     }
 
     /* قسم التواصل */
@@ -394,11 +495,14 @@
       .contact-container { grid-template-columns: 1fr; }
       .slide-item { flex: 0 0 80%; height: 220px; }
       .slider-btn { display: none; }
+      .hero h1 { font-size: 2.1rem; }
+      .hero::before { width: 280px; height: 280px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- رأس الصفحة -->
   <header>
     <div class="brand-container">
       <img src="Logo.png" alt="شعار كلادير" class="brand-logo" onerror="this.style.display='none'">
@@ -415,7 +519,9 @@
     </a>
   </header>
 
+  <!-- واجهة الموقع الرئيسية -->
   <div class="hero">
+    <img src="Logo.png" alt="شعار كلادير" class="hero-center-logo" onerror="this.style.display='none'">
     <h1>نبتكر للمساحات <span>روحاً وفخامة</span></h1>
     <p>شركة كلادير للتصميم الداخلي والتشطيبات الفاخرة، نُحول رؤيتك إلى واقع هندسي بأعلى معايير الدقة والالتزام.</p>
     <a href="#contact" class="btn-action" style="padding: 12px 28px; font-size: 1.05rem;">
@@ -423,6 +529,34 @@
     </a>
   </div>
 
+  <!-- قسم من نحن -->
+  <section id="about">
+    <div class="about-wrapper">
+      <h2 class="section-title">من نحن</h2>
+      <div class="about-card">
+        <h3>شركة كلادير (Clàdire) للإنشاء والديكور</h3>
+        <p>
+          نحن مؤسسة هندسية متخصصة في التصميم الداخلي وأعمال التشطيبات المتكاملة، نحرص على تقديم حلول معمارية مبتكرة ترتقي بذوق عملائنا. نحول الرسوم والأفكار إلى واقع ملموس بتفاصيل هندسية بالغة الدقة وبأعلى جودة تنفيذية متوافقة مع أحدث الاتجاهات العالمية.
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <span>إشراف هندسي تنفيذي دقيق</span>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <span>مقايسات واضحة وجداول تسليم ملزمة</span>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <span>أعلى معايير الجودة في الخامات والتشطيب</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم خدماتنا -->
   <section id="services">
     <h2 class="section-title">خدماتنا</h2>
     <div class="grid-3">
@@ -444,10 +578,12 @@
     </div>
   </section>
 
+  <!-- قسم سابقة الأعمال -->
   <section id="portfolio">
     <h2 class="section-title">سابقة الأعمال</h2>
     <div class="portfolio-container">
       
+      <!-- كارت المشروع الأول: شقة وصال 160 م -->
       <div class="project-slider-card">
         <div class="project-header">
           <h3>تشطيب متكامل — شقة وصال ١٦٠ م (عمارة ٢٩٣)</h3>
@@ -467,11 +603,11 @@
         </div>
 
         <div class="project-footer">
-          <p>جولة متكاملة توضح تفاصيل تشطيب الوحدة، تناسق توزيع الإضاءة، أعمال الأسقف الديكورية، والمستوى النهائي للتنفيذ على المفتاح.</p>
+          <p>تأسيس كامل للشبكات والإضاءات الحديثة (الليد بروفايل)، وتنسيق التجاليد الجدارية والأسقف المعلقة لتقديم وحدة راقية متكاملة على المفتاح.</p>
         </div>
       </div>
       
-        
+      <!-- كارت المشروع الثاني: فيديو شقة وصال 170 م -->
       <div class="project-slider-card">
         <div class="project-header">
           <h3>جولة بالفيديو — شقة وصال ١٧٠ م (عمارة ٢٧)</h3>
@@ -486,18 +622,15 @@
           </video>
         </div>
 
-
-
         <div class="project-footer">
-          <p>
-            تأسيس كامل للشبكات والإضاءات الحديثة (الليد بروفايل)، وتنسيق التجاليد الجدارية والأسقف المعلقة لتقديم وحدة راقية متكاملة على المفتاح.
-          </p>
+          <p>جولة متكاملة توضح تفاصيل تشطيب الوحدة، تناسق توزيع الإضاءة، أعمال الأسقف الديكورية، والمستوى النهائي للتنفيذ على المفتاح.</p>
         </div>
       </div>
 
     </div>
   </section>
 
+  <!-- قسم التواصل -->
   <section id="contact">
     <h2 class="section-title">تواصل معنا وحساباتنا</h2>
     <div class="contact-container">
@@ -560,10 +693,12 @@
     </div>
   </section>
 
+  <!-- زر واتساب العائم -->
   <a href="https://wa.me/201500001771" target="_blank" class="floating-whatsapp" title="تحدث معنا على واتساب">
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- التذييل -->
   <footer>
     <div class="footer-socials">
       <a href="https://www.facebook.com/cladiree" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -581,6 +716,15 @@
       const scrollStep = 330;
       slider.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
     }
+
+    // تشغيل الفيديو تلقائياً وبصمت
+    window.addEventListener('DOMContentLoaded', () => {
+      const vid = document.getElementById('portfolioVideo');
+      if (vid) {
+        vid.muted = true;
+        vid.play().catch(() => {});
+      }
+    });
 
     // إرسال البيانات المباشرة للواتساب
     function sendToWhatsApp() {
