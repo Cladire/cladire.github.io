@@ -98,7 +98,7 @@
       background: linear-gradient(135deg, var(--gold-hover), var(--gold));
     }
     
-    /* واجهة الموقع وتنسيق اللوجو في الخلفية */
+    /* واجهة الموقع الرئيسية */
     .hero {
       min-height: 85vh;
       display: flex;
@@ -108,34 +108,26 @@
       text-align: center;
       padding: 130px 20px 70px;
       position: relative;
-      background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(197, 160, 89, 0.12) 0%, rgba(15, 16, 18, 0.95) 70%);
       overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 380px;
-      height: 380px;
-      background: url('Logo.png') no-repeat center center;
-      background-size: contain;
-      opacity: 0.12;
-      pointer-events: none;
-      filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.4));
-      z-index: 1;
-    }
     .hero-center-logo {
-      width: 105px;
-      height: 105px;
+      width: 155px;
+      height: 155px;
       border-radius: 50%;
-      border: 2px solid var(--gold);
-      margin-bottom: 20px;
-      box-shadow: 0 0 25px rgba(197, 160, 89, 0.3);
+      border: 2.5px solid var(--gold);
+      margin-bottom: 25px;
+      box-shadow: 0 0 45px rgba(197, 160, 89, 0.45);
       object-fit: cover;
       position: relative;
       z-index: 2;
+      background-color: var(--surface-color);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+      cursor: pointer;
+    }
+    .hero-center-logo:hover {
+      transform: scale(1.06) rotate(3deg);
+      box-shadow: 0 0 60px rgba(223, 183, 108, 0.7);
     }
     .hero h1 {
       font-size: 2.8rem;
@@ -182,7 +174,7 @@
       border-radius: 2px;
     }
 
-    /* تنسيقات قسم من نحن */
+    /* قسم من نحن */
     .about-wrapper {
       max-width: 900px;
       margin: 0 auto;
@@ -256,7 +248,7 @@
       font-size: 0.95rem;
     }
 
-    /* تنسيقات شريط التمرير للمشاريع */
+    /* سابقة الأعمال */
     .portfolio-container {
       max-width: 1050px;
       margin: 0 auto;
@@ -496,13 +488,13 @@
       .slide-item { flex: 0 0 80%; height: 220px; }
       .slider-btn { display: none; }
       .hero h1 { font-size: 2.1rem; }
-      .hero::before { width: 280px; height: 280px; }
+      .hero-center-logo { width: 130px; height: 130px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- رأس الصفحة -->
+  <!-- شريط التنقل العلوي -->
   <header>
     <div class="brand-container">
       <img src="Logo.png" alt="شعار كلادير" class="brand-logo" onerror="this.style.display='none'">
@@ -583,7 +575,7 @@
     <h2 class="section-title">سابقة الأعمال</h2>
     <div class="portfolio-container">
       
-      <!-- كارت المشروع الأول: شقة وصال 160 م -->
+      <!-- كارت صور شقة وصال 160 م -->
       <div class="project-slider-card">
         <div class="project-header">
           <h3>تشطيب متكامل — شقة وصال ١٦٠ م (عمارة ٢٩٣)</h3>
@@ -607,7 +599,7 @@
         </div>
       </div>
       
-      <!-- كارت المشروع الثاني: فيديو شقة وصال 170 م -->
+      <!-- كارت فيديو شقة وصال 170 م -->
       <div class="project-slider-card">
         <div class="project-header">
           <h3>جولة بالفيديو — شقة وصال ١٧٠ م (عمارة ٢٧)</h3>
