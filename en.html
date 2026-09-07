@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clàdire | Modern Interior Design & Finishing</title>
+  <meta name="description" content="Clàdire - Leaders in interior design, turnkey finishing, and modern decor in Egypt">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0f1012;
+      --surface-color: #17191d;
+      --gold: #c5a059;
+      --gold-hover: #dfb76c;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1aa;
+      --border: rgba(197, 160, 89, 0.2);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    input, textarea {
+      -webkit-user-select: auto !important;
+      user-select: auto !important;
+    }
+    img {
+      pointer-events: none;
+      -webkit-touch-callout: none;
+      -webkit-user-drag: none;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 16, 18, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 5%;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      object-fit: cover;
+    }
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--gold);
+    }
+    .btn-action {
+      background: linear-gradient(135deg, var(--gold), #967432);
+      color: #000;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 25px;
+      transition: transform 0.2s, background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-action:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, var(--gold-hover), var(--gold));
+    }
+    .hero {
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 90px 20px 35px;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(197, 160, 89, 0.12) 0%, rgba(15, 16, 18, 0.95) 70%);
+      overflow: hidden;
+    }
+    .hero-center-logo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2.5px solid var(--gold);
+      margin-bottom: 12px;
+      box-shadow: 0 0 35px rgba(197, 160, 89, 0.4);
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      background-color: var(--surface-color);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+      cursor: pointer;
+    }
+    .hero-center-logo:hover {
+      transform: scale(1.06) rotate(3deg);
+      box-shadow: 0 0 60px rgba(223, 183, 108, 0.7);
+    }
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 span {
+      color: var(--gold);
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero .btn-action {
+      position: relative;
+      z-index: 2;
+    }
+    section {
+      padding: 40px 5%;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: var(--gold);
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+    .about-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .about-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px 25px;
+      text-align: center;
+    }
+    .about-card h3 {
+      color: var(--gold);
+      margin-bottom: 15px;
+      font-size: 1.45rem;
+    }
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 25px;
+    }
+    .about-highlights {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 22px;
+    }
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+    .highlight-item i {
+      color: var(--gold);
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--surface-color);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card i {
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .portfolio-container {
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .project-slider-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 35px;
+    }
+    .project-header h3 {
+      font-size: 1.4rem;
+      color: #fff;
+    }
+    .project-subtitle {
+      color: var(--gold);
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+    .slider-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .slider-track {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    .slider-track::-webkit-scrollbar {
+      height: 7px;
+    }
+    .slider-track::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+    }
+    .slider-track::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 4px;
+    }
+    .slide-item {
+      flex: 0 0 320px;
+      height: 240px;
+      scroll-snap-align: start;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .slide-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .slider-btn {
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid var(--gold);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+    .slider-btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+    .prev-btn { margin-right: 10px; }
+    .next-btn { margin-left: 10px; }
+    .project-footer p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 14px;
+    }
+    .video-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 18px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--border);
+    }
+    .video-container video {
+      width: 100%;
+      max-height: 480px;
+      display: block;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .video-box {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .video-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 16, 18, 0.85);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      z-index: 2;
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .video-box video {
+      width: 100%;
+      max-height: 420px;
+      display: block;
+      object-fit: cover;
+    }
+    .video-caption {
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      background: var(--surface-color);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .info-box {
+      background: var(--surface-color);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .info-box:hover {
+      transform: translateX(5px);
+      border-color: var(--gold);
+    }
+    .info-box i {
+      font-size: 1.4rem;
+      color: var(--gold);
+      width: 25px;
+      text-align: center;
+    }
+    .contact-form {
+      background: var(--surface-color);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: #0f1012;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .submit-btn {
+      background: #25d366;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+    .submit-btn:hover {
+      background: #1ebc57;
+    }
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25d366;
+      color: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: transform 0.2s;
+    }
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 5%;
+      text-align: center;
+      background: #0b0c0e;
+    }
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .footer-socials a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface-color);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      transition: 0.3s;
+    }
+    .footer-socials a:hover {
+      background: var(--gold);
+      color: #000;
+    }
+    @media (max-width: 768px) {
+      header { padding: 10px 4%; }
+      nav { display: none; }
+      .contact-container { grid-template-columns: 1fr; }
+      .slide-item { flex: 0 0 80%; height: 220px; }
+      .slider-btn { display: none; }
+      .hero h1 { font-size: 2.1rem; }
+      .hero-center-logo { width: 115px; height: 115px; }
+      .video-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-container">
+      <img src="Logo.png" alt="Clàdire Logo" class="brand-logo" onerror="this.style.display='none'">
+      <div class="brand-name">Clàdire</div>
+    </div>
+    <nav>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+      <a href="index.html" style="color: var(--gold); border: 1px solid var(--gold); padding: 2px 10px; border-radius: 12px; font-size: 0.85rem;">عربي</a>
+    </nav>
+    <a href="tel:+201500001771" class="btn-action">
+      <i class="fas fa-phone-alt"></i> Call Us
+    </a>
+  </header>
+
+  <div class="hero">
+    <img src="Logo.png" alt="Clàdire Logo" class="hero-center-logo" onerror="this.style.display='none'">
+    <h1>Inspiring Spaces with <span>Elegance & Luxury</span></h1>
+    <p>Clàdire Interior Design & Luxury Finishing. We turn your vision into engineering reality with the highest precision and commitment.</p>
+    <a href="#contact" class="btn-action" style="padding: 12px 28px; font-size: 1.05rem;">
+      Book Free Consultation / Quotation
+    </a>
+  </div>
+
+  <section id="about">
+    <div class="about-wrapper">
+      <h2 class="section-title">About Us</h2>
+      <div class="about-card">
+        <h3>Clàdire Construction & Decor</h3>
+        <p>
+          We are an engineering enterprise specialized in turnkey finishing and premium interior architecture. We convert design blueprints into reality with meticulous attention to detail and world-class execution standards.
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Rigorous Engineering Supervision</span>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Transparent Quotations & Timely Delivery</span>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Premium Materials & Flawless Execution</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="grid-3">
+      <div class="card">
+        <i class="fas fa-drafting-compass"></i>
+        <h3>3D Design & Spatial Planning</h3>
+        <p>Detailed layouts and 3D architectural renders to visualize your space prior to implementation.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-hammer"></i>
+        <h3>Turnkey Finishing & Contracting</h3>
+        <p>Infrastructure, plumbing, electrical installations, and finishing works under strict engineering oversight.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-couch"></i>
+        <h3>Modern Decor & Wall Cladding</h3>
+        <p>Marble and wood alternatives, wall mouldings, and modern hidden lighting profiles for bespoke interiors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+    <div class="portfolio-container">
+      
+      <div class="project-slider-card">
+        <div class="project-header">
+          <h3>Turnkey Finishing — Wesal Apartment 160 sqm (Building 293)</h3>
+          <p class="project-subtitle">Wesal Compound | Complete interior execution and bespoke decor</p>
+        </div>
+
+        <div class="slider-wrapper">
+          <button class="slider-btn prev-btn" onclick="scrollSlider('slider1', -1)" aria-label="Previous">&#10094;</button>
+          <div class="slider-track" id="slider1">
+            <div class="slide-item"><img src="IMG_0452.jpeg" alt="Wesal Building 293 Photo 1"></div>
+            <div class="slide-item"><img src="IMG_0464.jpeg" alt="Wesal Building 293 Photo 2"></div>
+            <div class="slide-item"><img src="IMG_0465.png" alt="Wesal Building 293 Photo 3"></div>
+            <div class="slide-item"><img src="IMG_0466.png" alt="Wesal Building 293 Photo 4"></div>
+            <div class="slide-item"><img src="IMG_0467.png" alt="Wesal Building 293 Photo 5"></div>
+          </div>
+          <button class="slider-btn next-btn" onclick="scrollSlider('slider1', 1)" aria-label="Next">&#10095;</button>
+        </div>
+
+        <div class="project-footer">
+          <p>Comprehensive MEP installations, modern LED profiles, wall claddings, and suspended ceilings delivered turnkey.</p>
+        </div>
+      </div>
+
+      <div class="project-slider-card">
+        <div class="project-header">
+          <h3>Wesal Apartment 160 sqm — From Concept to Reality</h3>
+          <p class="project-subtitle">Comparison between 3D design plans and on-site execution</p>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-box">
+            <div class="video-badge"><i class="fas fa-cube"></i> 3D Design</div>
+            <video class="auto-play-video" autoplay loop muted playsinline webkit-playsinline controls preload="auto">
+              <source src="design_3d.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+            <div class="video-caption">Conceptual space planning and material design</div>
+          </div>
+
+          <div class="video-box">
+            <div class="video-badge"><i class="fas fa-check-circle"></i> Real Execution</div>
+            <video class="auto-play-video" autoplay loop muted playsinline webkit-playsinline controls preload="auto">
+              <source src="execution.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+            <div class="video-caption">Final turnkey delivery matching the 3D model 100%</div>
+          </div>
+        </div>
+
+        <div class="project-footer">
+          <p>We ensure exact matching between the 3D blueprints and physical reality, from lighting routes to marble and woodwork textures.</p>
+        </div>
+      </div>
+      
+      <div class="project-slider-card">
+        <div class="project-header">
+          <h3>Video Tour — Wesal Apartment 170 sqm (Building 27)</h3>
+          <p class="project-subtitle">Wesal Compound - Shorouk City | Live walkthrough of delivered finishings</p>
+        </div>
+
+        <div class="video-container">
+          <video class="auto-play-video" autoplay loop muted playsinline webkit-playsinline controls preload="auto">
+            <source src="copy_DF6C5ECD-B511-4B76-B049-61B6C49D17CE.mov" type="video/quicktime">
+            <source src="copy_DF6C5ECD-B511-4B76-B049-61B6C49D17CE.mov" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+        </div>
+
+        <div class="project-footer">
+          <p>Comprehensive video tour showcasing finishing details, lighting harmony, and turnkey execution quality.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact & Socials</h2>
+    <div class="contact-container">
+      
+      <div class="contact-info">
+        <a href="tel:+201500001771" class="info-box">
+          <i class="fas fa-phone"></i>
+          <div>
+            <div style="font-weight: 700;">Direct Phone</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">+20 15 0000 1771</div>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/cladiree" target="_blank" class="info-box">
+          <i class="fab fa-facebook-f"></i>
+          <div>
+            <div style="font-weight: 700;">Facebook</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">@cladiree</div>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/cladire_" target="_blank" class="info-box">
+          <i class="fab fa-instagram"></i>
+          <div>
+            <div style="font-weight: 700;">Instagram</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">@cladire_</div>
+          </div>
+        </a>
+
+        <a href="https://www.tiktok.com/@cladiree" target="_blank" class="info-box">
+          <i class="fab fa-tiktok"></i>
+          <div>
+            <div style="font-weight: 700;">TikTok</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">@cladiree</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="contact-form">
+        <h3 style="margin-bottom: 5px;">Book a Consultation / Quotation</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 10px;">Fill in the details and our representative will contact you:</p>
+        
+        <div class="form-group">
+          <input type="text" id="clientName" placeholder="Full Name">
+        </div>
+        <div class="form-group">
+          <input type="tel" id="clientPhone" placeholder="Phone Number">
+        </div>
+        <div class="form-group">
+          <input type="text" id="clientLocation" placeholder="City / Unit Location">
+        </div>
+        <div class="form-group">
+          <textarea id="clientDetails" rows="3" placeholder="Unit details, area (sqm), and requirements"></textarea>
+        </div>
+        <button class="submit-btn" onclick="sendToWhatsApp()">
+          <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Send via WhatsApp
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <a href="https://wa.me/201500001771" target="_blank" class="floating-whatsapp" title="Contact us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/cladiree" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/cladire_" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@cladiree" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://wa.me/201500001771" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 Clàdire Design & Finishing. All rights reserved.</p>
+  </footer>
+
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'u', 's', 'a'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+    });
+
+    function scrollSlider(sliderId, direction) {
+      const slider = document.getElementById(sliderId);
+      const scrollStep = 330;
+      slider.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const allVideos = document.querySelectorAll('video');
+
+      allVideos.forEach(vid => {
+        vid.muted = true;
+        vid.defaultMuted = true;
+
+        const playPromise = vid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const forcePlay = () => {
+              vid.play().catch(() => {});
+              document.removeEventListener('touchstart', forcePlay);
+              document.removeEventListener('scroll', forcePlay);
+            };
+            document.addEventListener('touchstart', forcePlay, { once: true });
+            document.addEventListener('scroll', forcePlay, { once: true });
+          });
+        }
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.play().catch(() => {});
+            }
+          });
+        }, { threshold: 0.25 });
+
+        allVideos.forEach(vid => observer.observe(vid));
+      }
+    });
+
+    function sendToWhatsApp() {
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const location = document.getElementById('clientLocation').value.trim();
+      const details = document.getElementById('clientDetails').value.trim();
+
+      if (!name || !phone) {
+        alert('Please enter your name and phone number');
+        return;
+      }
+
+      const message = `Hello Clàdire, I would like to inquire about finishing services:%0A%0A- Name: ${name}%0A- Phone: ${phone}%0A- Location: ${location || 'N/A'}%0A- Details: ${details || 'No details provided'}`;
+      window.open(`https://wa.me/201500001771?text=${message}`, '_blank');
+    }
+  </script>
+</body>
+</html>
