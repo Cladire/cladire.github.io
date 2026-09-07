@@ -337,7 +337,7 @@
     .prev-btn { margin-left: 10px; }
     .next-btn { margin-right: 10px; }
 
-    /* شبكة الفيديوهات المزدوجة (3D والتنفيذ) */
+    /* شبكة الفيديوهات المزدوجة - معالجة تمدد سفاري بأعلى دقة */
     .project-videos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -346,7 +346,7 @@
       width: 100%;
     }
     .video-card-item {
-      background: rgba(0, 0, 0, 0.3);
+      background: #000;
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
@@ -355,8 +355,8 @@
     }
     .video-card-header {
       padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       font-size: 0.92rem;
       font-weight: 700;
       color: var(--gold);
@@ -364,12 +364,22 @@
       align-items: center;
       gap: 8px;
     }
-    .video-card-item video {
+    .video-wrapper-box {
+      position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      padding-top: 56.25%; /* نسبة شاشة 16:9 ثابتة */
+      background: #000;
+      overflow: hidden;
+    }
+    .video-wrapper-box video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain; /* إظهار كامل إطار الفيديو مهما كانت أبعاده دون مط أو تمدد */
       background: #000;
       display: block;
-      object-fit: cover;
     }
 
     .project-footer p {
@@ -634,25 +644,29 @@
         <!-- الفيديوهات المزدوجة (التصميم 3D مقابل التنفيذ الواقعي) -->
         <div class="project-videos-grid">
           <!-- فيديو التصميم ثلاثي الأبعاد -->
-          <div class="ScreenRecording_05-20-2026 02-13-09_1.mp4">
-            <div class="ScreenRecording_05-20-2026 02-13-09_1.mp4">
+          <div class="video-card-item">
+            <div class="video-card-header">
               <i class="fas fa-cube"></i> التصميم ثلاثي الأبعاد (3D Render)
             </div>
-            <video controls playsinline preload="metadata">
-              <source src="ScreenRecording_05-20-2026 02-13-09_1.mp4" type="video/mp4">
-              متصفحك لا يدعم تشغيل هذا الفيديو.
-            </video>
+            <div class="video-wrapper-box">
+              <video controls playsinline preload="metadata" poster="IMG_0452.jpeg">
+                <source src="ScreenRecording_05-20-2026 02-13-09_1.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل هذا الفيديو.
+              </video>
+            </div>
           </div>
 
           <!-- فيديو التنفيذ على أرض الواقع -->
-          <div class="copy_5C91AD51-39AB-432A-B840-5CCE139278EB.mp4">
-            <div class="copy_5C91AD51-39AB-432A-B840-5CCE139278EB.mp4">
+          <div class="video-card-item">
+            <div class="video-card-header">
               <i class="fas fa-check-circle"></i> التنفيذ الواقعي على أرض الواقع
             </div>
-            <video controls playsinline preload="metadata">
-              <source src="copy_5C91AD51-39AB-432A-B840-5CCE139278EB.mp4" type="video/mp4">
-              متصفحك لا يدعم تشغيل هذا الفيديو.
-            </video>
+            <div class="video-wrapper-box">
+              <video controls playsinline preload="metadata" poster="IMG_0464.jpeg">
+                <source src="copy_5C91AD51-39AB-432A-B840-5CCE139278EB.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل هذا الفيديو.
+              </video>
+            </div>
           </div>
         </div>
 
