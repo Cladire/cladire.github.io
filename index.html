@@ -336,6 +336,42 @@
     }
     .prev-btn { margin-left: 10px; }
     .next-btn { margin-right: 10px; }
+
+    /* شبكة الفيديوهات المزدوجة (3D والتنفيذ) */
+    .project-videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 22px 0;
+      width: 100%;
+    }
+    .video-card-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-card-header {
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .video-card-item video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      display: block;
+      object-fit: cover;
+    }
+
     .project-footer p {
       color: var(--text-muted);
       font-size: 0.95rem;
@@ -344,7 +380,7 @@
       padding-top: 14px;
     }
 
-    /* مشغل الفيديو */
+    /* مشغل الفيديو المنفرد */
     .video-container {
       width: 100%;
       max-width: 800px;
@@ -582,6 +618,7 @@
           <p class="project-subtitle">كمبوند وصال | تنفيذ وتصميم ديكورات داخلية متكاملة</p>
         </div>
 
+        <!-- شريط الصور -->
         <div class="slider-wrapper">
           <button class="slider-btn prev-btn" onclick="scrollSlider('slider1', 1)" aria-label="السابق">&#10095;</button>
           <div class="slider-track" id="slider1">
@@ -592,6 +629,31 @@
             <div class="slide-item"><img src="IMG_0467.png" alt="وصال عماره 293 صوره 5" onclick="window.open(this.src)"></div>
           </div>
           <button class="slider-btn next-btn" onclick="scrollSlider('slider1', -1)" aria-label="التالي">&#10094;</button>
+        </div>
+
+        <!-- الفيديوهات المزدوجة (التصميم 3D مقابل التنفيذ الواقعي) -->
+        <div class="project-videos-grid">
+          <!-- فيديو التصميم ثلاثي الأبعاد -->
+          <div class="ScreenRecording_05-20-2026 02-13-09_1.mp4">
+            <div class="ScreenRecording_05-20-2026 02-13-09_1.mp4">
+              <i class="fas fa-cube"></i> التصميم ثلاثي الأبعاد (3D Render)
+            </div>
+            <video controls playsinline preload="metadata">
+              <source src="3d_design_video.mp4" type="video/mp4">
+              متصفحك لا يدعم تشغيل هذا الفيديو.
+            </video>
+          </div>
+
+          <!-- فيديو التنفيذ على أرض الواقع -->
+          <div class="copy_5C91AD51-39AB-432A-B840-5CCE139278EB.mp4">
+            <div class="copy_5C91AD51-39AB-432A-B840-5CCE139278EB.mp4">
+              <i class="fas fa-check-circle"></i> التنفيذ الواقعي على أرض الواقع
+            </div>
+            <video controls playsinline preload="metadata">
+              <source src="execution_video.mp4" type="video/mp4">
+              متصفحك لا يدعم تشغيل هذا الفيديو.
+            </video>
+          </div>
         </div>
 
         <div class="project-footer">
