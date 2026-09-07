@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="htmlRoot">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,6 +94,29 @@
     }
     nav a:hover {
       color: var(--gold);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lang-toggle-btn {
+      background: rgba(197, 160, 89, 0.1);
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+    .lang-toggle-btn:hover {
+      background: var(--gold);
+      color: #000;
     }
     .btn-action {
       background: linear-gradient(135deg, var(--gold), #967432);
@@ -338,6 +361,8 @@
     }
     .prev-btn { margin-left: 10px; }
     .next-btn { margin-right: 10px; }
+    html[dir="ltr"] .prev-btn { margin-left: 0; margin-right: 10px; }
+    html[dir="ltr"] .next-btn { margin-right: 0; margin-left: 10px; }
     .project-footer p {
       color: var(--text-muted);
       font-size: 0.95rem;
@@ -389,6 +414,10 @@
       align-items: center;
       gap: 6px;
     }
+    html[dir="ltr"] .video-badge {
+      right: auto;
+      left: 12px;
+    }
     .video-box video {
       width: 100%;
       max-height: 420px;
@@ -428,6 +457,9 @@
     .info-box:hover {
       transform: translateX(-5px);
       border-color: var(--gold);
+    }
+    html[dir="ltr"] .info-box:hover {
+      transform: translateX(5px);
     }
     .info-box i {
       font-size: 1.4rem;
@@ -492,6 +524,10 @@
       z-index: 999;
       transition: transform 0.2s;
     }
+    html[dir="ltr"] .floating-whatsapp {
+      left: auto;
+      right: 25px;
+    }
     .floating-whatsapp:hover {
       transform: scale(1.1);
     }
@@ -539,49 +575,54 @@
 
   <header>
     <div class="brand-container">
-      <img src="Logo.png" alt="شعار كلادير" class="brand-logo" onerror="this.style.display='none'">
+      <img src="Logo.png" alt="Clàdire Logo" class="brand-logo" onerror="this.style.display='none'">
       <div class="brand-name">Clàdire</div>
     </div>
     <nav>
-      <a href="#about">من نحن</a>
-      <a href="#services">خدماتنا</a>
-      <a href="#portfolio">سابقة الأعمال</a>
-      <a href="#contact">تواصل معنا</a>
+      <a href="#about" data-i18n="nav_about">من نحن</a>
+      <a href="#services" data-i18n="nav_services">خدماتنا</a>
+      <a href="#portfolio" data-i18n="nav_portfolio">سابقة الأعمال</a>
+      <a href="#contact" data-i18n="nav_contact">تواصل معنا</a>
     </nav>
-    <a href="tel:+201500001771" class="btn-action">
-      <i class="fas fa-phone-alt"></i> اتصل بنا
-    </a>
+    <div class="header-actions">
+      <button class="lang-toggle-btn" onclick="toggleLanguage()" id="langBtn">
+        <i class="fas fa-globe"></i> English
+      </button>
+      <a href="tel:+201500001771" class="btn-action">
+        <i class="fas fa-phone-alt"></i> <span data-i18n="btn_call">اتصل بنا</span>
+      </a>
+    </div>
   </header>
 
   <div class="hero">
-    <img src="Logo.png" alt="شعار كلادير" class="hero-center-logo" onerror="this.style.display='none'">
-    <h1>نبتكر للمساحات <span>روحاً وفخامة</span></h1>
-    <p>شركة كلادير للتصميم الداخلي والتشطيبات الفاخرة، نُحول رؤيتك إلى واقع هندسي بأعلى معايير الدقة والالتزام.</p>
-    <a href="#contact" class="btn-action" style="padding: 12px 28px; font-size: 1.05rem;">
+    <img src="Logo.png" alt="Clàdire Logo" class="hero-center-logo" onerror="this.style.display='none'">
+    <h1 data-i18n="hero_title">نبتكر للمساحات <span>روحاً وفخامة</span></h1>
+    <p data-i18n="hero_desc">شركة كلادير للتصميم الداخلي والتشطيبات الفاخرة، نُحول رؤيتك إلى واقع هندسي بأعلى معايير الدقة والالتزام.</p>
+    <a href="#contact" class="btn-action" style="padding: 12px 28px; font-size: 1.05rem;" data-i18n="hero_cta">
       احجز استشارة / مقايسة مجانية
     </a>
   </div>
 
   <section id="about">
     <div class="about-wrapper">
-      <h2 class="section-title">من نحن</h2>
+      <h2 class="section-title" data-i18n="about_title">من نحن</h2>
       <div class="about-card">
-        <h3>شركة كلادير (Clàdire) للإنشاء والديكور</h3>
-        <p>
+        <h3 data-i18n="about_subtitle">شركة كلادير (Clàdire) للإنشاء والديكور</h3>
+        <p data-i18n="about_text">
           نحن مؤسسة هندسية متخصصة في التصميم الداخلي وأعمال التشطيبات المتكاملة، نحرص على تقديم حلول معمارية مبتكرة ترتقي بذوق عملائنا. نحول الرسوم والأفكار إلى واقع ملموس بتفاصيل هندسية بالغة الدقة وبأعلى جودة تنفيذية متوافقة مع أحدث الاتجاهات العالمية.
         </p>
         <div class="about-highlights">
           <div class="highlight-item">
             <i class="fas fa-check-circle"></i>
-            <span>إشراف هندسي تنفيذي دقيق</span>
+            <span data-i18n="highlight_1">إشراف هندسي تنفيذي دقيق</span>
           </div>
           <div class="highlight-item">
             <i class="fas fa-check-circle"></i>
-            <span>مقايسات واضحة وجداول تسليم ملزمة</span>
+            <span data-i18n="highlight_2">مقايسات واضحة وجداول تسليم ملزمة</span>
           </div>
           <div class="highlight-item">
             <i class="fas fa-check-circle"></i>
-            <span>أعلى معايير الجودة في الخامات والتشطيب</span>
+            <span data-i18n="highlight_3">أعلى معايير الجودة في الخامات والتشطيب</span>
           </div>
         </div>
       </div>
@@ -589,88 +630,88 @@
   </section>
 
   <section id="services">
-    <h2 class="section-title">خدماتنا</h2>
+    <h2 class="section-title" data-i18n="services_title">خدماتنا</h2>
     <div class="grid-3">
       <div class="card">
         <i class="fas fa-drafting-compass"></i>
-        <h3>تصميم 3D وتخطيط معمارى</h3>
-        <p>مخططات تفصيلية وتوزيع مساحات ورسومات ثلاثية الأبعاد لرؤية منزلك قبل بدء التنفيذ بدقة تامة.</p>
+        <h3 data-i18n="service_1_title">تصميم 3D وتخطيط معمارى</h3>
+        <p data-i18n="service_1_desc">مخططات تفصيلية وتوزيع مساحات ورسومات ثلاثية الأبعاد لرؤية منزلك قبل بدء التنفيذ بدقة تامة.</p>
       </div>
       <div class="card">
         <i class="fas fa-hammer"></i>
-        <h3>التشطيبات والتنفيذ المتكامل</h3>
-        <p>أعمال التأسيس، السباكة، الكهرباء، المحارة، والدهانات بإشراف هندسي صارم ومواعيد محددة.</p>
+        <h3 data-i18n="service_2_title">التشطيبات والتنفيذ المتكامل</h3>
+        <p data-i18n="service_2_desc">أعمال التأسيس، السباكة، الكهرباء، المحارة، والدهانات بإشراف هندسي صارم ومواعيد محددة.</p>
       </div>
       <div class="card">
         <i class="fas fa-couch"></i>
-        <h3>الديكور والتجاليد الحديثة</h3>
-        <p>تركيب بدائل الرخام والخشب، والبانوهات، وأنظمة الإضاءة المخفية والمودرن لتشطيب راقٍ ومميز.</p>
+        <h3 data-i18n="service_3_title">الديكور والتجاليد الحديثة</h3>
+        <p data-i18n="service_3_desc">تركيب بدائل الرخام والخشب، والبانوهات، وأنظمة الإضاءة المخفية والمودرن لتشطيب راقٍ ومميز.</p>
       </div>
     </div>
   </section>
 
   <section id="portfolio">
-    <h2 class="section-title">سابقة الأعمال</h2>
+    <h2 class="section-title" data-i18n="portfolio_title">سابقة الأعمال</h2>
     <div class="portfolio-container">
       
       <div class="project-slider-card">
         <div class="project-header">
-          <h3>تشطيب متكامل — شقة وصال ١٦٠ م (عمارة ٢٩٣)</h3>
-          <p class="project-subtitle">كمبوند وصال | تنفيذ وتصميم ديكورات داخلية متكاملة</p>
+          <h3 data-i18n="project_1_title">تشطيب متكامل — شقة وصال ١٦٠ م (عمارة ٢٩٣)</h3>
+          <p class="project-subtitle" data-i18n="project_1_sub">كمبوند وصال | تنفيذ وتصميم ديكورات داخلية متكاملة</p>
         </div>
 
         <div class="slider-wrapper">
           <button class="slider-btn prev-btn" onclick="scrollSlider('slider1', 1)" aria-label="السابق">&#10095;</button>
           <div class="slider-track" id="slider1">
-            <div class="slide-item"><img src="IMG_0452.jpeg" alt="وصال عماره 293 صوره 1"></div>
-            <div class="slide-item"><img src="IMG_0464.jpeg" alt="وصال عماره 293 صوره 2"></div>
-            <div class="slide-item"><img src="IMG_0465.png" alt="وصال عماره 293 صوره 3"></div>
-            <div class="slide-item"><img src="IMG_0466.png" alt="وصال عماره 293 صوره 4"></div>
-            <div class="slide-item"><img src="IMG_0467.png" alt="وصال عماره 293 صوره 5"></div>
+            <div class="slide-item"><img src="IMG_0452.jpeg" alt="Photo 1"></div>
+            <div class="slide-item"><img src="IMG_0464.jpeg" alt="Photo 2"></div>
+            <div class="slide-item"><img src="IMG_0465.png" alt="Photo 3"></div>
+            <div class="slide-item"><img src="IMG_0466.png" alt="Photo 4"></div>
+            <div class="slide-item"><img src="IMG_0467.png" alt="Photo 5"></div>
           </div>
           <button class="slider-btn next-btn" onclick="scrollSlider('slider1', -1)" aria-label="التالي">&#10094;</button>
         </div>
 
         <div class="project-footer">
-          <p>تأسيس كامل للشبكات والإضاءات الحديثة (الليد بروفايل)، وتنسيق التجاليد الجدارية والأسقف المعلقة لتقديم وحدة راقية متكاملة على المفتاح.</p>
+          <p data-i18n="project_1_desc">تأسيس كامل للشبكات والإضاءات الحديثة (الليد بروفايل)، وتنسيق التجاليد الجدارية والأسقف المعلقة لتقديم وحدة راقية متكاملة على المفتاح.</p>
         </div>
       </div>
 
       <div class="project-slider-card">
         <div class="project-header">
-          <h3>شقة وصال ١٦٠ م — من المخطط إلى الواقع</h3>
-          <p class="project-subtitle">مقارنة بين التصميم ثلاثي الأبعاد (3D) ودقة التنفيذ الفعلي</p>
+          <h3 data-i18n="project_compare_title">شقة وصال ١٦٠ م — من المخطط إلى الواقع</h3>
+          <p class="project-subtitle" data-i18n="project_compare_sub">مقارنة بين التصميم ثلاثي الأبعاد (3D) ودقة التنفيذ الفعلي</p>
         </div>
 
         <div class="video-grid">
           <div class="video-box">
-            <div class="video-badge"><i class="fas fa-cube"></i> التصميم 3D</div>
+            <div class="video-badge"><i class="fas fa-cube"></i> <span data-i18n="badge_3d">التصميم 3D</span></div>
             <video class="auto-play-video" autoplay loop muted playsinline webkit-playsinline controls preload="auto">
               <source src="design_3d.mp4" type="video/mp4">
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
-            <div class="video-caption">مخطط وتوزيع المساحات والديكور المقترح</div>
+            <div class="video-caption" data-i18n="caption_3d">مخطط وتوزيع المساحات والديكور المقترح</div>
           </div>
 
           <div class="video-box">
-            <div class="video-badge"><i class="fas fa-check-circle"></i> التنفيذ الفعلي</div>
+            <div class="video-badge"><i class="fas fa-check-circle"></i> <span data-i18n="badge_exec">التنفيذ الفعلي</span></div>
             <video class="auto-play-video" autoplay loop muted playsinline webkit-playsinline controls preload="auto">
               <source src="execution.mp4" type="video/mp4">
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
-            <div class="video-caption">التسليم النهائي بدقة مطابقة للتصميم 100%</div>
+            <div class="video-caption" data-i18n="caption_exec">التسليم النهائي بدقة مطابقة للتصميم 100%</div>
           </div>
         </div>
 
         <div class="project-footer">
-          <p>نحرص على مطابقة التنفيذ لأدق تفاصيل المخطط ثلاثي الأبعاد، من توزيع مسارات الإضاءة والليد بروفايل وحتى خامات الأخشاب والرخام.</p>
+          <p data-i18n="project_compare_desc">نحرص على مطابقة التنفيذ لأدق تفاصيل المخطط ثلاثي الأبعاد، من توزيع مسارات الإضاءة والليد بروفايل وحتى خامات الأخشاب والرخام.</p>
         </div>
       </div>
       
       <div class="project-slider-card">
         <div class="project-header">
-          <h3>جولة بالفيديو — شقة وصال ١٧٠ م (عمارة ٢٧)</h3>
-          <p class="project-subtitle">كمبوند وصال - مدينة الشروق | استعراض تفاصيل التشطيب والتنفيذ على أرض الواقع</p>
+          <h3 data-i18n="project_2_title">جولة بالفيديو — شقة وصال ١٧٠ م (عمارة ٢٧)</h3>
+          <p class="project-subtitle" data-i18n="project_2_sub">كمبوند وصال - مدينة الشروق | استعراض تفاصيل التشطيب والتنفيذ على أرض الواقع</p>
         </div>
 
         <div class="video-container">
@@ -682,7 +723,7 @@
         </div>
 
         <div class="project-footer">
-          <p>جولة متكاملة توضح تفاصيل تشطيب الوحدة، تناسق توزيع الإضاءة، أعمال الأسقف الديكورية، والمستوى النهائي للتنفيذ على المفتاح.</p>
+          <p data-i18n="project_2_desc">جولة متكاملة توضح تفاصيل تشطيب الوحدة، تناسق توزيع الإضاءة، أعمال الأسقف الديكورية، والمستوى النهائي للتنفيذ على المفتاح.</p>
         </div>
       </div>
 
@@ -690,14 +731,14 @@
   </section>
 
   <section id="contact">
-    <h2 class="section-title">تواصل معنا وحساباتنا</h2>
+    <h2 class="section-title" data-i18n="contact_title">تواصل معنا وحساباتنا</h2>
     <div class="contact-container">
       
       <div class="contact-info">
         <a href="tel:+201500001771" class="info-box">
           <i class="fas fa-phone"></i>
           <div>
-            <div style="font-weight: 700;">اتصال هاتفي</div>
+            <div style="font-weight: 700;" data-i18n="call_box_title">اتصال هاتفي</div>
             <div style="color: var(--text-muted); font-size: 0.9rem;">+20 15 0000 1771</div>
           </div>
         </a>
@@ -705,7 +746,7 @@
         <a href="https://www.facebook.com/cladiree" target="_blank" class="info-box">
           <i class="fab fa-facebook-f"></i>
           <div>
-            <div style="font-weight: 700;">فيسبوك (Facebook)</div>
+            <div style="font-weight: 700;" data-i18n="fb_title">فيسبوك (Facebook)</div>
             <div style="color: var(--text-muted); font-size: 0.9rem;">cladiree@</div>
           </div>
         </a>
@@ -713,7 +754,7 @@
         <a href="https://www.instagram.com/cladire_" target="_blank" class="info-box">
           <i class="fab fa-instagram"></i>
           <div>
-            <div style="font-weight: 700;">إنستغرام (Instagram)</div>
+            <div style="font-weight: 700;" data-i18n="ig_title">إنستغرام (Instagram)</div>
             <div style="color: var(--text-muted); font-size: 0.9rem;">cladire_@</div>
           </div>
         </a>
@@ -721,15 +762,15 @@
         <a href="https://www.tiktok.com/@cladiree" target="_blank" class="info-box">
           <i class="fab fa-tiktok"></i>
           <div>
-            <div style="font-weight: 700;">تيك توك (TikTok)</div>
+            <div style="font-weight: 700;" data-i18n="tt_title">تيك توك (TikTok)</div>
             <div style="color: var(--text-muted); font-size: 0.9rem;">cladiree@</div>
           </div>
         </a>
       </div>
 
       <div class="contact-form">
-        <h3 style="margin-bottom: 5px;">احجز معاينة / مقايسة</h3>
-        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 10px;">املأ البيانات وسيقوم ممثلنا بالتواصل معك فوراً:</p>
+        <h3 style="margin-bottom: 5px;" data-i18n="form_title">احجز معاينة / مقايسة</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 10px;" data-i18n="form_desc">املأ البيانات وسيقوم ممثلنا بالتواصل معك فوراً:</p>
         
         <div class="form-group">
           <input type="text" id="clientName" placeholder="الاسم بالكامل">
@@ -744,14 +785,14 @@
           <textarea id="clientDetails" rows="3" placeholder="تفاصيل الوحدة والمساحة والمطلوب تنفيذه"></textarea>
         </div>
         <button class="submit-btn" onclick="sendToWhatsApp()">
-          <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> إرسال عبر واتساب
+          <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> <span data-i18n="form_btn">إرسال عبر واتساب</span>
         </button>
       </div>
 
     </div>
   </section>
 
-  <a href="https://wa.me/201500001771" target="_blank" class="floating-whatsapp" title="تحدث معنا على واتساب">
+  <a href="https://wa.me/201500001771" target="_blank" class="floating-whatsapp" title="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -762,10 +803,147 @@
       <a href="https://www.tiktok.com/@cladiree" target="_blank"><i class="fab fa-tiktok"></i></a>
       <a href="https://wa.me/201500001771" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p style="color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 Clàdire Design & Finishing. جميع الحقوق محفوظة.</p>
+    <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n="footer_copy">&copy; 2026 Clàdire Design & Finishing. جميع الحقوق محفوظة.</p>
   </footer>
 
   <script>
+    const translations = {
+      ar: {
+        nav_about: "من نحن",
+        nav_services: "خدماتنا",
+        nav_portfolio: "سابقة الأعمال",
+        nav_contact: "تواصل معنا",
+        btn_call: "اتصل بنا",
+        hero_title: "نبتكر للمساحات <span>روحاً وفخامة</span>",
+        hero_desc: "شركة كلادير للتصميم الداخلي والتشطيبات الفاخرة، نُحول رؤيتك إلى واقع هندسي بأعلى معايير الدقة والالتزام.",
+        hero_cta: "احجز استشارة / مقايسة مجانية",
+        about_title: "من نحن",
+        about_subtitle: "شركة كلادير (Clàdire) للإنشاء والديكور",
+        about_text: "نحن مؤسسة هندسية متخصصة في التصميم الداخلي وأعمال التشطيبات المتكاملة، نحرص على تقديم حلول معمارية مبتكرة ترتقي بذوق عملائنا. نحول الرسوم والأفكار إلى واقع ملموس بتفاصيل هندسية بالغة الدقة وبأعلى جودة تنفيذية متوافقة مع أحدث الاتجاهات العالمية.",
+        highlight_1: "إشراف هندسي تنفيذي دقيق",
+        highlight_2: "مقايسات واضحة وجداول تسليم ملزمة",
+        highlight_3: "أعلى معايير الجودة في الخامات والتشطيب",
+        services_title: "خدماتنا",
+        service_1_title: "تصميم 3D وتخطيط معمارى",
+        service_1_desc: "مخططات تفصيلية وتوزيع مساحات ورسومات ثلاثية الأبعاد لرؤية منزلك قبل بدء التنفيذ بدقة تامة.",
+        service_2_title: "التشطيبات والتنفيذ المتكامل",
+        service_2_desc: "أعمال التأسيس، السباكة، الكهرباء، المحارة، والدهانات بإشراف هندسي صارم ومواعيد محددة.",
+        service_3_title: "الديكور والتجاليد الحديثة",
+        service_3_desc: "تركيب بدائل الرخام والخشب، والبانوهات، وأنظمة الإضاءة المخفية والمودرن لتشطيب راقٍ ومميز.",
+        portfolio_title: "سابقة الأعمال",
+        project_1_title: "تشطيب متكامل — شقة وصال ١٦٠ م (عمارة ٢٩٣)",
+        project_1_sub: "كمبوند وصال | تنفيذ وتصميم ديكورات داخلية متكاملة",
+        project_1_desc: "تأسيس كامل للشبكات والإضاءات الحديثة (الليد بروفايل)، وتنسيق التجاليد الجدارية والأسقف المعلقة لتقديم وحدة راقية متكاملة على المفتاح.",
+        project_compare_title: "شقة وصال ١٦٠ م — من المخطط إلى الواقع",
+        project_compare_sub: "مقارنة بين التصميم ثلاثي الأبعاد (3D) ودقة التنفيذ الفعلي",
+        badge_3d: "التصميم 3D",
+        caption_3d: "مخطط وتوزيع المساحات والديكور المقترح",
+        badge_exec: "التنفيذ الفعلي",
+        caption_exec: "التسليم النهائي بدقة مطابقة للتصميم 100%",
+        project_compare_desc: "نحرص على مطابقة التنفيذ لأدق تفاصيل المخطط ثلاثي الأبعاد، من توزيع مسارات الإضاءة والليد بروفايل وحتى خامات الأخشاب والرخام.",
+        project_2_title: "جولة بالفيديو — شقة وصال ١٧٠ م (عمارة ٢٧)",
+        project_2_sub: "كمبوند وصال - مدينة الشروق | استعراض تفاصيل التشطيب والتنفيذ على أرض الواقع",
+        project_2_desc: "جولة متكاملة توضح تفاصيل تشطيب الوحدة، تناسق توزيع الإضاءة، أعمال الأسقف الديكورية، والمستوى النهائي للتنفيذ على المفتاح.",
+        contact_title: "تواصل معنا وحساباتنا",
+        call_box_title: "اتصال هاتفي",
+        fb_title: "فيسبوك (Facebook)",
+        ig_title: "إنستغرام (Instagram)",
+        tt_title: "تيك توك (TikTok)",
+        form_title: "احجز معاينة / مقايسة",
+        form_desc: "املأ البيانات وسيقوم ممثلنا بالتواصل معك فوراً:",
+        form_btn: "إرسال عبر واتساب",
+        footer_copy: "&copy; 2026 Clàdire Design & Finishing. جميع الحقوق محفوظة.",
+        placeholder_name: "الاسم بالكامل",
+        placeholder_phone: "رقم الهاتف",
+        placeholder_location: "مدينة / موقع الوحدة",
+        placeholder_details: "تفاصيل الوحدة والمساحة والمطلوب تنفيذه"
+      },
+      en: {
+        nav_about: "About Us",
+        nav_services: "Services",
+        nav_portfolio: "Portfolio",
+        nav_contact: "Contact",
+        btn_call: "Call Us",
+        hero_title: "Inspiring Spaces with <span>Elegance & Luxury</span>",
+        hero_desc: "Clàdire Interior Design & Luxury Finishing. We turn your vision into engineering reality with the highest precision and commitment.",
+        hero_cta: "Book Free Consultation / Quotation",
+        about_title: "About Us",
+        about_subtitle: "Clàdire Construction & Decor",
+        about_text: "We are an engineering enterprise specialized in turnkey finishing and premium interior architecture. We convert design blueprints into reality with meticulous attention to detail and world-class execution standards.",
+        highlight_1: "Rigorous Engineering Supervision",
+        highlight_2: "Transparent Quotations & Timely Delivery",
+        highlight_3: "Premium Materials & Flawless Execution",
+        services_title: "Our Services",
+        service_1_title: "3D Design & Spatial Planning",
+        service_1_desc: "Detailed layouts and 3D architectural renders to visualize your space prior to implementation.",
+        service_2_title: "Turnkey Finishing & Contracting",
+        service_2_desc: "Infrastructure, plumbing, electrical installations, and finishing works under strict engineering oversight.",
+        service_3_title: "Modern Decor & Wall Cladding",
+        service_3_desc: "Marble and wood alternatives, wall mouldings, and modern hidden lighting profiles for bespoke interiors.",
+        portfolio_title: "Portfolio",
+        project_1_title: "Turnkey Finishing — Wesal Apartment 160 sqm (Bldg 293)",
+        project_1_sub: "Wesal Compound | Complete interior execution and bespoke decor",
+        project_1_desc: "Comprehensive MEP installations, modern LED profiles, wall claddings, and suspended ceilings delivered turnkey.",
+        project_compare_title: "Wesal Apartment 160 sqm — From Concept to Reality",
+        project_compare_sub: "Comparison between 3D design plans and on-site execution",
+        badge_3d: "3D Design",
+        caption_3d: "Conceptual space planning and material design",
+        badge_exec: "Real Execution",
+        caption_exec: "Final turnkey delivery matching the 3D model 100%",
+        project_compare_desc: "We ensure exact matching between the 3D blueprints and physical reality, from lighting routes to marble and woodwork textures.",
+        project_2_title: "Video Tour — Wesal Apartment 170 sqm (Bldg 27)",
+        project_2_sub: "Wesal Compound - Shorouk City | Live walkthrough of delivered finishings",
+        project_2_desc: "Comprehensive video tour showcasing finishing details, lighting harmony, and turnkey execution quality.",
+        contact_title: "Contact & Socials",
+        call_box_title: "Direct Phone",
+        fb_title: "Facebook",
+        ig_title: "Instagram",
+        tt_title: "TikTok",
+        form_title: "Book a Consultation / Quotation",
+        form_desc: "Fill in the details and our representative will contact you:",
+        form_btn: "Send via WhatsApp",
+        footer_copy: "&copy; 2026 Clàdire Design & Finishing. All rights reserved.",
+        placeholder_name: "Full Name",
+        placeholder_phone: "Phone Number",
+        placeholder_location: "City / Unit Location",
+        placeholder_details: "Unit details, area (sqm), and requirements"
+      }
+    };
+
+    let currentLang = 'ar';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const root = document.getElementById('htmlRoot');
+      const langBtn = document.getElementById('langBtn');
+
+      if (lang === 'en') {
+        root.setAttribute('dir', 'ltr');
+        root.setAttribute('lang', 'en');
+        langBtn.innerHTML = '<i class="fas fa-globe"></i> عربي';
+      } else {
+        root.setAttribute('dir', 'rtl');
+        root.setAttribute('lang', 'ar');
+        langBtn.innerHTML = '<i class="fas fa-globe"></i> English';
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(elem => {
+        const key = elem.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          elem.innerHTML = translations[lang][key];
+        }
+      });
+
+      document.getElementById('clientName').placeholder = translations[lang].placeholder_name;
+      document.getElementById('clientPhone').placeholder = translations[lang].placeholder_phone;
+      document.getElementById('clientLocation').placeholder = translations[lang].placeholder_location;
+      document.getElementById('clientDetails').placeholder = translations[lang].placeholder_details;
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'ar' ? 'en' : 'ar');
+    }
+
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
@@ -773,10 +951,7 @@
       window.scrollTo(0, 0);
     }
 
-    document.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-    });
-
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
     document.addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && ['c', 'u', 's', 'a'].includes(e.key.toLowerCase())) {
         e.preventDefault();
@@ -785,17 +960,16 @@
 
     function scrollSlider(sliderId, direction) {
       const slider = document.getElementById(sliderId);
-      const scrollStep = 330;
-      slider.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+      const isLtr = document.getElementById('htmlRoot').getAttribute('dir') === 'ltr';
+      const dirFactor = isLtr ? -1 : 1;
+      slider.scrollBy({ left: direction * 330 * dirFactor, behavior: 'smooth' });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       const allVideos = document.querySelectorAll('video');
-
       allVideos.forEach(vid => {
         vid.muted = true;
         vid.defaultMuted = true;
-
         const playPromise = vid.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
@@ -818,7 +992,6 @@
             }
           });
         }, { threshold: 0.25 });
-
         allVideos.forEach(vid => observer.observe(vid));
       }
     });
@@ -830,14 +1003,19 @@
       const details = document.getElementById('clientDetails').value.trim();
 
       if (!name || !phone) {
-        alert('يرجى كتابة الاسم ورقم الهاتف على الأقل');
+        alert(currentLang === 'en' ? 'Please enter your name and phone number' : 'يرجى كتابة الاسم ورقم الهاتف على الأقل');
         return;
       }
 
-      const message = `مرحباً شركة كلادير، أود الاستفسار عن مقايسة تشطيب:%0A%0A- الاسم: ${name}%0A- الهاتف: ${phone}%0A- الموقع: ${location || 'غير محدد'}%0A- التفاصيل: ${details || 'لا توجد تفاصيل إضافية'}`;
+      const greeting = currentLang === 'en' ? 'Hello Clàdire, I would like to inquire about finishing services:' : 'مرحباً شركة كلادير، أود الاستفسار عن مقايسة تشطيب:';
+      const labelName = currentLang === 'en' ? 'Name' : 'الاسم';
+      const labelPhone = currentLang === 'en' ? 'Phone' : 'الهاتف';
+      const labelLocation = currentLang === 'en' ? 'Location' : 'الموقع';
+      const labelDetails = currentLang === 'en' ? 'Details' : 'التفاصيل';
+
+      const message = `${greeting}%0A%0A- ${labelName}: ${name}%0A- ${labelPhone}: ${phone}%0A- ${labelLocation}: ${location || 'N/A'}%0A- ${labelDetails}: ${details || 'N/A'}`;
       window.open(`https://wa.me/201500001771?text=${message}`, '_blank');
     }
   </script>
 </body>
 </html>
-
